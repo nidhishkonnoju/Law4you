@@ -5,11 +5,11 @@ from dotenv import load_dotenv
 from PIL import Image
 
 # --- CONFIGURATION ---
-# Load environment variables from your .env file
-load_dotenv()
+import streamlit as st
+
 try:
-    # Configure the Gemini API with your key
-    genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+    # Configure the Gemini API with your key from Streamlit's secrets
+    genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 except (TypeError, ValueError) as e:
     print(f"ERROR: Could not configure Gemini API. Check GOOGLE_API_KEY. Details: {{e}}")
     exit()
